@@ -9,135 +9,281 @@
 import Foundation
 
 class Calculator {
-    var exp: [String]
-    var needsToClear: Bool
-    let priority: [String:Int] = [
-        "+": 1,
-        "-": 1,
-        "×": 2,
-        "÷": 2
-    ]
+    static let initText = "0"
+    static let errText = "ERROR"
     
-    var result: String {
-        return exp.joined()
+    var numbers = [Double]()
+    var binOps = [BinaryOperator]()
+    var text = Calculator.initText
+    var clearScreen = false
+    
+    func reset(text: String) {
+        self.numbers = []
+        self.binOps = []
+        self.text = text
+        self.clearScreen = false
     }
     
-    init(_ initContent: String?) {
-        exp = []
-        needsToClear = true
-        if let value = initContent {
-            exp.append(value)
+    // 输入小数点或者数字
+    func appendText(text: String) {
+        if clearScreen {
+            self.text = "0"
+            clearScreen = false
         }
-    }
-    
-    func doOperation(_ text: String) {
-        let opRegex = try! NSRegularExpression(pattern: "^[+\\-×÷]$", options: [])
-        let numRegex = try! NSRegularExpression(pattern: "^[\\d\\.]$", options: [])
-        let floatRegex = try! NSRegularExpression(pattern: "^-?\\d*\\.?\\d*$", options: [])
-        if needsToClear {
-            exp = []
-            needsToClear = false
-        }
-        if text == "AC" {
-            exp = ["0"]
-            needsToClear = true
-        } else if opRegex.matches(in: text, options: [], range: NSRange(location: 0, length: text.count)).count != 0{
-        //    print("operation regex matched")
-            exp.append(text)
-        } else if numRegex.matches(in: text, options: [], range: NSRange(location: 0, length: text.count)).count != 0 {
-            if exp.isEmpty || floatRegex.matches(in: exp[exp.endIndex-1], options: [], range: NSRange(location: 0, length: exp[exp.endIndex-1].count)).count == 0 {
-                exp.append(text)
-            } else {
-                exp[exp.endIndex-1] += text
-            }
-        } else if text == "="{
-            exp = [eval()]
-            needsToClear = true
+        if self.text == "0" && Int(text) != nil || self.text == "ERROR" {
+            self.text = text
         } else {
-            if exp.isEmpty {
-                exp = ["0"]
-                needsToClear = true
-            }
-            else if text == "+/-" && floatRegex.matches(in: exp[exp.endIndex-1], options: [], range: NSRange(location: 0, length: exp[exp.endIndex-1].count)).count != 0{
-                //print("test")
-                if exp[exp.endIndex-1].starts(with: "-") {
-                    let str = exp[exp.endIndex-1]
-                    exp[exp.endIndex-1] = str.substingInRange(1..<str.count) ?? "0"
-                    // print(exp[exp.endIndex-1])
-                } else {
-                    exp[exp.endIndex-1] = "-" + exp[exp.endIndex-1]
-                }
-            } else if text == "%" && floatRegex.matches(in: exp[exp.endIndex-1], options: [], range: NSRange(location: 0, length: exp[exp.endIndex-1].count)).count != 0 {
-                exp[exp.endIndex-1] = String((Double(exp[exp.endIndex-1]) ?? 0) / 100)
-            } else {
-                exp = ["ERROR"]
-                needsToClear = true
-            }
+            self.text.append(text)
         }
     }
     
-    func eval() -> String{
-        for i in 0..<exp.count {
-            if exp[i].hasPrefix(".") {
-                exp[i] = "0" + exp[i]
-            }
-            if exp[i].hasSuffix(".") {
-                exp[i] = exp[i] + "0"
-            }
+    // 一元运算
+    func doUnaryOperation(op: UnaryOperator) {
+        clearScreen = false
+        if let num = Double(text), let result = op.doOperation(num: num) {
+            self.text = String(format: "%.7f", result).removeZeroSuffix()
+   //         self.text = String(op.doOperation(num: num))
+        } else {
+            handleError()
         }
-        var operands = [Double]()
-        var operators = [String]()
-        for item in exp {
-            if let num = Double(item) {
-                operands.append(num)
-            } else {
-                while !(operators.isEmpty || priority[item]! > priority[operators[operators.endIndex-1]]!) {
-                    let op = operators.removeLast()
-                    if operands.count > 1 {
-                        let num2 = operands.removeLast()
-                        let num1 = operands.removeLast()
-                        if op == "+" {
-                            operands.append(num1 + num2)
-                        } else if op == "-" {
-                            operands.append(num1 - num2)
-                        } else if op == "×" {
-                            operands.append(num1 * num2)
-                        } else if op == "÷" {
-                            operands.append(num1 / num2)
-                        } else {
-                            return "ERROR"
-                        }
-                    } else {
-                        return "ERROR"
-                    }
+    }
+    
+    // 添加二元运算符
+    func appendBinaryOperation(op: BinaryOperator) {
+        clearScreen = false
+        if let num = Double(text) {
+            self.numbers.append(num)
+            while !binOps.isEmpty && op.priority <= binOps.last!.priority {
+                if numbers.count < 2 {
+                    handleError()
+                    return
                 }
-                operators.append(item)
-            }
-        }
-        while !(operators.isEmpty) {
-            let op = operators.removeLast()
-            if operands.count > 1 {
-                let num2 = operands.removeLast()
-                let num1 = operands.removeLast()
-                if op == "+" {
-                    operands.append(num1 + num2)
-                } else if op == "-" {
-                    operands.append(num1 - num2)
-                } else if op == "×" {
-                    operands.append(num1 * num2)
-                } else if op == "÷" {
-                    operands.append(num1 / num2)
+                let num2 = numbers.popLast()!
+                let num1 = numbers.popLast()!
+                let binOp = binOps.popLast()!
+                
+                if let num = binOp.doOperation(a: num1, b: num2) {
+                    numbers.append(num)
                 } else {
-                    return "ERROR"
+                    handleError()
+                    return
                 }
-              } else {
-                  return "ERROR"
-              }
+            }
+            self.binOps.append(op)
+            self.text = Calculator.initText
+        } else {
+            handleError()
         }
-        if operands.count != 1 {
-            return "ERROR"
+    }
+    
+    // 输入等于号的时候求值
+    func eval() {
+        if let num = Double(text) {
+            self.numbers.append(num)
+            while !binOps.isEmpty && numbers.count >= 2{
+                    let num2 = numbers.popLast()!
+                    let num1 = numbers.popLast()!
+                    let binOp = binOps.popLast()!
+                    
+                    if let num = binOp.doOperation(a: num1, b: num2) {
+                        numbers.append(num)
+                    } else {
+                        handleError()
+                        return
+                    }
+            }
+            if !binOps.isEmpty || numbers.count != 1 {
+                handleError()
+            } else {
+                reset(text: String(format: "%.7f", numbers.last!).removeZeroSuffix())
+            }
+        } else {
+            handleError()
         }
-        return String(operands[0])
+        clearScreen = true
+    }
+    
+    // 运算遇到错误的时候调用该方法
+    func handleError() {
+        reset(text: Calculator.errText)
+    }
+}
+//class Calculator {
+////    var firstNumber: Double? // 第一个变量
+//    var numbers: [Double] // 数值
+//    var text: String
+//    var binOps: [BinaryOperator]
+////    var binOp: BinaryOperator?
+//    var resultText: String {
+//        return text
+//    }
+//
+//    init(initText: String) {
+//        text = initText
+//    }
+//
+//    // 向text追加文字
+//    func appendText(text: String) {
+//        if self.text == "0" && Int(text) != nil || self.text == "ERROR" {
+//            self.text = text
+////            if let num = Int(text) {
+////                self.text = text
+////            } else {
+////                self.text.append(text)
+////            }
+//        } else {
+//            self.text.append(text)
+//        }
+//    }
+//
+//    func reset(text: String) {
+//        numbers = []
+//        binOps = []
+//        self.text = text
+//    }
+//
+//    func doUnaryOperation(op: UnaryOperator) -> Bool{
+//        if let num = Double(text) {
+//            text = String(op.doOperation(num: num))
+//            return true
+//        }
+//        return false
+//    }
+//
+//    func setBinOp(binOp: BinaryOperator, text: String) -> Bool {
+//        if let num = Double(self.text), firstNumber == nil, self.binOp == nil {
+//            firstNumber = num
+//            self.text = text
+//            self.binOp = binOp
+//            return true
+//        }
+//        return false
+//    }
+//
+//    func doBinaryOperation()->Bool {
+//        if let num1 = firstNumber, let op = binOp, let num2 = Double(text), let result = op.doOperation(a: num1, b: num2) {
+////            print(firstNumber, text, binOp)
+////            text = String(result)
+//            reset(text: String(result))
+//            return true
+//        }
+//        return false
+//    }
+//}
+//
+enum BinaryOperator : String{
+    case ADD = "+"
+    case SUB = "-"
+    case MUL = "×"
+    case DIV = "÷"
+    case POW = "xʸ"
+    case EE = "EE"
+    case ROOT = "ʸ√x"
+    
+    var priority: Int {
+        switch self {
+        case .ADD, .SUB:
+            return 1
+        case .MUL, .DIV, .EE, .ROOT, .POW:
+            return 2
+        }
+    }
+
+    func doOperation(a: Double, b: Double) -> Double? {
+        switch self {
+        case .ADD:
+            return a + b
+        case .SUB:
+            return a - b
+        case .MUL:
+            return a * b
+        case .DIV:
+            return b == 0 ? nil : a / b
+        case .ROOT:
+            return b == 0 ? nil : pow(a, 1 / b)
+        case .EE:
+            return a * pow(10, b)
+        case .POW:
+            return pow(a, b)
+//        default:
+//            return nil
+        }
+    }
+}
+
+enum UnaryOperator: String {
+    case NEGATE = "+/-"
+    case PERCENT = "%"
+    case SQUARE = "x²"
+    case CUBE = "x³"
+    case E_EXP = "eˣ"
+    case TEN_EXP = "10ˣ"
+    case RECIP = "1/x"
+    case SQUARE_ROOT = "√x"
+    case CUBE_ROOT = "∛x"
+    case LN = "ln"
+    case LOG10 = "log₁₀"
+    case FACTORIAL = "x!"
+    case SIN = "sin"
+    case COS = "cos"
+    case TAN = "tan"
+    case SINH = "sinh"
+    case COSH = "cosh"
+    case TANH = "tanh"
+    case E = "e"
+    case PI = "π"
+    case RAND = "Rand"
+    case RAD = "Rad"
+
+
+    func doOperation(num: Double) -> Double? {
+        switch self {
+        case .NEGATE:
+            return -num
+        case .PERCENT:
+            return num / 100
+        case .SQUARE:
+            return pow(num, 2)
+        case .CUBE:
+            return pow(num, 3)
+        case .E_EXP:
+            return pow(M_E, num)
+        case .TEN_EXP:
+            return pow(10, num)
+        case .RECIP:
+            return num == 0 ? nil : 1 / num
+        case .SQUARE_ROOT:
+            return sqrt(num)
+        case .CUBE_ROOT: // 立方根
+            return cbrt(num)
+        case .LN:
+            return log(num)
+        case .LOG10:
+            return log10(num)
+        case .FACTORIAL:
+            // TODO: 实现阶乘函数
+            return num < 0 ? nil : num == 0 ? 1 : Double((1...Int(num)).reduce(1, {$0 * $1}))
+        case .SIN:
+            return sin(num)
+        case .COS:
+            return cos(num)
+        case .TAN:
+            return tan(num)
+        case .SINH:
+            return sinh(num)
+        case .COSH:
+            return cosh(num)
+        case .TANH:
+            return tanh(num)
+        case .E:
+            return M_E
+        case .PI:
+            return Double.pi
+        case .RAND:
+            return Double.random(in: 0..<1)
+        case .RAD:
+            return num * Double.pi / 180
+        }
     }
 }
 
@@ -150,5 +296,19 @@ extension String {
         let startIndex = self.index(self.startIndex, offsetBy:r.lowerBound)
         let endIndex   = self.index(self.startIndex, offsetBy:r.upperBound)
         return String(self[startIndex..<endIndex])
+    }
+    
+    func removeZeroSuffix()->String {
+        var result = self
+        if contains(".") {
+            while result.last! == "0" {
+                result.removeLast()
+            }
+            
+            if result.last! == "." {
+                result.removeLast()
+            }
+        }
+        return result
     }
 }
