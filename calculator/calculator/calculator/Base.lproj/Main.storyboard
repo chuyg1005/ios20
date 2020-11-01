@@ -38,6 +38,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular" hidden="YES"/>
+                                                <connections>
+                                                    <action selector="touchBinary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T4Y-2y-CDA"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-P8-sAU">
                                                 <rect key="frame" x="81" y="0.0" width="80" height="65"/>
@@ -47,6 +50,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular" hidden="YES"/>
+                                                <connections>
+                                                    <action selector="touchBinary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qdU-2G-jkT"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5M-p8-pKR">
                                                 <rect key="frame" x="162" y="0.0" width="79.5" height="65"/>

@@ -17,12 +17,14 @@ class Calculator {
     private(set) var text = Calculator.initText
     private var clearScreen = false
     private var memoryValue = 0.0
+    private var lastBinaryOperation: BinaryOperator? = nil
     
     func reset(text: String) {
         self.numbers = []
         self.binOps = []
         self.text = text
         self.clearScreen = false
+        self.lastBinaryOperation = nil
   //      self.memoryValue = 0.0
     }
     
@@ -52,10 +54,16 @@ class Calculator {
     
     // 添加二元运算符
     func appendBinaryOperation(op: BinaryOperator) {
+//        lastBinaryOperation = op
         clearScreen = false
         if let num = Double(text) {
-            self.numbers.append(num)
-            while !binOps.isEmpty && op.priority <= binOps.last!.priority {
+            
+            if lastBinaryOperation != .RBRACKET && op != .LBRACKET{
+                self.numbers.append(num)
+            }
+            lastBinaryOperation = op
+            
+            while !binOps.isEmpty && op.priority <= binOps.last!.priority && binOps.last! != .LBRACKET{
                 if numbers.count < 2 {
                     handleError()
                     return
@@ -71,18 +79,33 @@ class Calculator {
                     return
                 }
             }
-            self.binOps.append(op)
-            self.text = Calculator.initText
+            
+            if op == .RBRACKET {
+                if !binOps.isEmpty && binOps.last! == .LBRACKET {
+                    binOps.removeLast()
+//                    binOps.popLast()
+                    self.text = Calculator.initText
+                } else {
+                    handleError()
+                }
+            } else {
+                self.binOps.append(op)
+                self.text = Calculator.initText
+            }
+            
         } else {
             handleError()
         }
+//        print(binOps)
     }
     
     // 输入等于号的时候求值
     func eval() {
         if let num = Double(text) {
-            self.numbers.append(num)
-            while !binOps.isEmpty && numbers.count >= 2{
+            if lastBinaryOperation != BinaryOperator.RBRACKET {
+                self.numbers.append(num)
+            }
+            while !binOps.isEmpty && numbers.count >= 2 && binOps.last! != .LBRACKET{
                     let num2 = numbers.popLast()!
                     let num1 = numbers.popLast()!
                     let binOp = binOps.popLast()!
@@ -210,13 +233,19 @@ enum BinaryOperator : String{
     case POW = "xʸ"
     case EE = "EE"
     case ROOT = "ʸ√x"
+    case LBRACKET = "("
+    case RBRACKET = ")"
     
     var priority: Int {
         switch self {
+        case .RBRACKET:
+            return 0
         case .ADD, .SUB:
             return 1
         case .MUL, .DIV, .EE, .ROOT, .POW:
             return 2
+        case .LBRACKET:
+            return 3
         }
     }
 
@@ -236,6 +265,8 @@ enum BinaryOperator : String{
             return a * pow(10, b)
         case .POW:
             return pow(a, b)
+        case .LBRACKET, .RBRACKET:
+            return nil
 //        default:
 //            return nil
         }
