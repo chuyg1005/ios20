@@ -12,16 +12,18 @@ class Calculator {
     static let initText = "0"
     static let errText = "ERROR"
     
-    var numbers = [Double]()
-    var binOps = [BinaryOperator]()
-    var text = Calculator.initText
-    var clearScreen = false
+    private var numbers = [Double]()
+    private var binOps = [BinaryOperator]()
+    private(set) var text = Calculator.initText
+    private var clearScreen = false
+    private var memoryValue = 0.0
     
     func reset(text: String) {
         self.numbers = []
         self.binOps = []
         self.text = text
         self.clearScreen = false
+  //      self.memoryValue = 0.0
     }
     
     // 输入小数点或者数字
@@ -41,7 +43,7 @@ class Calculator {
     func doUnaryOperation(op: UnaryOperator) {
         clearScreen = false
         if let num = Double(text), let result = op.doOperation(num: num) {
-            self.text = String(format: "%.7f", result).removeZeroSuffix()
+            self.text = formatDouble(value: result)
    //         self.text = String(op.doOperation(num: num))
         } else {
             handleError()
@@ -95,7 +97,7 @@ class Calculator {
             if !binOps.isEmpty || numbers.count != 1 {
                 handleError()
             } else {
-                reset(text: String(format: "%.7f", numbers.last!).removeZeroSuffix())
+                reset(text: formatDouble(value: numbers.last!))
             }
         } else {
             handleError()
@@ -103,8 +105,37 @@ class Calculator {
         clearScreen = true
     }
     
+    // 存储管理
+    func memoryManage(command: String) {
+        switch command {
+        case "mc":
+            self.memoryValue = 0.0
+        case "m+":
+            if let num = Double(text) {
+                self.memoryValue += num
+            } else {
+                handleError()
+            }
+        case "m-":
+            if let num = Double(text) {
+                self.memoryValue -= num
+            } else {
+                handleError()
+            }
+        case "mr":
+            self.text = formatDouble(value: memoryValue)
+        default:
+            handleError()
+        }
+//        print(memoryValue)
+    }
+    
+    private func formatDouble(value: Double) -> String{
+        return String(format: "%.7f", value).removeZeroSuffix()
+    }
+    
     // 运算遇到错误的时候调用该方法
-    func handleError() {
+    private func handleError() {
         reset(text: Calculator.errText)
     }
 }

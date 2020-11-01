@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    lazy var calculator = Calculator()
+    private lazy var calculator = Calculator()
     @IBOutlet weak var result: UILabel!
     
     override func viewDidLoad() {
@@ -44,6 +44,12 @@ class ViewController: UIViewController {
     @IBAction func touchBinary(_ sender: UIButton) {
         if let title = sender.currentTitle, let op = BinaryOperator(rawValue: title) {
             calculator.appendBinaryOperation(op: op)
+            updateView()
+        }
+    }
+    @IBAction func touchMemoryManage(_ sender: UIButton) {
+        if let title = sender.currentTitle {
+            calculator.memoryManage(command: title)
             updateView()
         }
     }

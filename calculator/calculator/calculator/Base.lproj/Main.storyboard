@@ -56,6 +56,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular" hidden="YES"/>
+                                                <connections>
+                                                    <action selector="touchMemoryManage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ouU-Ur-7gN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqJ-hL-6w5">
                                                 <rect key="frame" x="242.5" y="0.0" width="80" height="65"/>
@@ -65,6 +68,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular" hidden="YES"/>
+                                                <connections>
+                                                    <action selector="touchMemoryManage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pOl-2Y-mbR"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePs-Pa-qfR">
                                                 <rect key="frame" x="323.5" y="0.0" width="80" height="65"/>
@@ -74,6 +80,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular" hidden="YES"/>
+                                                <connections>
+                                                    <action selector="touchMemoryManage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nld-cS-xyQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijm-TJ-2Bs">
                                                 <rect key="frame" x="404.5" y="0.0" width="80" height="65"/>
@@ -83,6 +92,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular" hidden="YES"/>
+                                                <connections>
+                                                    <action selector="touchMemoryManage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v06-Sk-Imj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbZ-LY-sAd">
                                                 <rect key="frame" x="485.5" y="0.0" width="80" height="65"/>
