@@ -92,48 +92,113 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b4M-Wd-6Cy">
-                                <rect key="frame" x="20" y="64" width="335" height="583"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter shopping item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbx-pN-SwM">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="66"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ghb-Sq-Gpq">
-                                        <rect key="frame" x="0.0" y="74" width="335" height="335"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="ghb-Sq-Gpq" secondAttribute="height" multiplier="1:1" id="kcL-xw-2Gd"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Liu-Ej-XfZ" appends="YES" id="NTW-nR-rDi"/>
-                                        </connections>
-                                    </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWt-4H-oxL" customClass="CustomizedTextView" customModule="ShoppingTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="417" width="335" height="166"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="输入描述信息"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
-                                </subviews>
-                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter shopping item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbx-pN-SwM">
+                                <rect key="frame" x="20" y="64" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWt-4H-oxL" customClass="CustomizedTextView" customModule="ShoppingTracker" customModuleProvider="target">
+                                <rect key="frame" x="20" y="475" width="335" height="172"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="输入描述信息"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ghb-Sq-Gpq">
+                                <rect key="frame" x="19" y="118" width="337" height="337"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ghb-Sq-Gpq" secondAttribute="height" multiplier="1:1" id="kcL-xw-2Gd"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Liu-Ej-XfZ" appends="YES" id="NTW-nR-rDi"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="b4M-Wd-6Cy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="QKv-WQ-got"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b4M-Wd-6Cy" secondAttribute="trailing" constant="20" id="ca9-nH-Hih"/>
-                            <constraint firstItem="b4M-Wd-6Cy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gcb-k1-ycB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b4M-Wd-6Cy" secondAttribute="bottom" constant="20" id="gdM-dR-ZVF"/>
+                            <constraint firstItem="ghb-Sq-Gpq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="02n-Gy-oj4"/>
+                            <constraint firstItem="qbx-pN-SwM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="23d-oe-Wmg"/>
+                            <constraint firstItem="ghb-Sq-Gpq" firstAttribute="width" secondItem="qbx-pN-SwM" secondAttribute="width" multiplier="1.00597" id="24u-CM-04n"/>
+                            <constraint firstAttribute="bottom" secondItem="QWt-4H-oxL" secondAttribute="bottom" constant="20" id="4Qp-26-fn0"/>
+                            <constraint firstItem="QWt-4H-oxL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="5ZX-PA-VCe"/>
+                            <constraint firstItem="qbx-pN-SwM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="7uG-Lo-SmE"/>
+                            <constraint firstItem="QWt-4H-oxL" firstAttribute="top" secondItem="qbx-pN-SwM" secondAttribute="bottom" constant="20" id="DqP-p9-Fej"/>
+                            <constraint firstItem="QWt-4H-oxL" firstAttribute="width" secondItem="qbx-pN-SwM" secondAttribute="width" id="Fhc-t6-DM2"/>
+                            <constraint firstItem="QWt-4H-oxL" firstAttribute="width" secondItem="qbx-pN-SwM" secondAttribute="width" id="Oc5-3o-DGv"/>
+                            <constraint firstItem="ghb-Sq-Gpq" firstAttribute="leading" secondItem="qbx-pN-SwM" secondAttribute="trailing" constant="20" id="Otx-9X-y6a"/>
+                            <constraint firstItem="ghb-Sq-Gpq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OvT-Bi-otf"/>
+                            <constraint firstAttribute="trailing" secondItem="ghb-Sq-Gpq" secondAttribute="trailing" constant="20" id="R9w-5S-I4e"/>
+                            <constraint firstItem="qbx-pN-SwM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="SNd-Jx-ukg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QWt-4H-oxL" secondAttribute="bottom" constant="20" id="aNz-fc-Exn"/>
+                            <constraint firstItem="QWt-4H-oxL" firstAttribute="top" secondItem="ghb-Sq-Gpq" secondAttribute="bottom" constant="6" id="hJY-as-stK">
+                                <variation key="heightClass=regular" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qbx-pN-SwM" secondAttribute="trailing" constant="20" id="hfS-ZU-cEk"/>
+                            <constraint firstItem="ghb-Sq-Gpq" firstAttribute="top" secondItem="qbx-pN-SwM" secondAttribute="bottom" constant="20" id="ibZ-5v-zJD"/>
+                            <constraint firstItem="qbx-pN-SwM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="leP-m9-Mf6"/>
+                            <constraint firstAttribute="bottom" secondItem="ghb-Sq-Gpq" secondAttribute="bottom" constant="20" id="yhF-WX-VfX"/>
+                            <constraint firstItem="QWt-4H-oxL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zAv-ZJ-3Wa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aNz-fc-Exn"/>
+                                <exclude reference="hfS-ZU-cEk"/>
+                                <exclude reference="23d-oe-Wmg"/>
+                                <exclude reference="7uG-Lo-SmE"/>
+                                <exclude reference="SNd-Jx-ukg"/>
+                                <exclude reference="leP-m9-Mf6"/>
+                                <exclude reference="02n-Gy-oj4"/>
+                                <exclude reference="24u-CM-04n"/>
+                                <exclude reference="Otx-9X-y6a"/>
+                                <exclude reference="OvT-Bi-otf"/>
+                                <exclude reference="R9w-5S-I4e"/>
+                                <exclude reference="ibZ-5v-zJD"/>
+                                <exclude reference="yhF-WX-VfX"/>
+                                <exclude reference="4Qp-26-fn0"/>
+                                <exclude reference="5ZX-PA-VCe"/>
+                                <exclude reference="DqP-p9-Fej"/>
+                                <exclude reference="Fhc-t6-DM2"/>
+                                <exclude reference="Oc5-3o-DGv"/>
+                                <exclude reference="hJY-as-stK"/>
+                                <exclude reference="zAv-ZJ-3Wa"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="SNd-Jx-ukg"/>
+                                <include reference="leP-m9-Mf6"/>
+                                <include reference="02n-Gy-oj4"/>
+                                <include reference="Otx-9X-y6a"/>
+                                <include reference="R9w-5S-I4e"/>
+                                <include reference="yhF-WX-VfX"/>
+                                <include reference="4Qp-26-fn0"/>
+                                <include reference="5ZX-PA-VCe"/>
+                                <include reference="DqP-p9-Fej"/>
+                                <include reference="Oc5-3o-DGv"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="aNz-fc-Exn"/>
+                                <include reference="hfS-ZU-cEk"/>
+                                <include reference="23d-oe-Wmg"/>
+                                <include reference="7uG-Lo-SmE"/>
+                                <include reference="24u-CM-04n"/>
+                                <include reference="OvT-Bi-otf"/>
+                                <include reference="ibZ-5v-zJD"/>
+                                <include reference="Fhc-t6-DM2"/>
+                                <include reference="hJY-as-stK"/>
+                                <include reference="zAv-ZJ-3Wa"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="新建购物项" id="XHh-IK-xhR">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jIH-8g-lFc">
@@ -162,7 +227,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="698" y="221"/>
+            <point key="canvasLocation" x="696.7016491754124" y="220"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tXU-W3-YsW">
