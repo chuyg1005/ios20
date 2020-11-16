@@ -87,17 +87,13 @@
 		5211FFD9255D2BC700408E4A /* ShoppingTracker */ = {
 			isa = PBXGroup;
 			children = (
+				523437B025620B470012554B /* controller */,
+				523437AF25620B3E0012554B /* model */,
+				523437AE25620B310012554B /* view */,
 				5211FFDA255D2BC700408E4A /* AppDelegate.swift */,
 				5211FFDC255D2BC700408E4A /* SceneDelegate.swift */,
-				5211FFDE255D2BC700408E4A /* ShoppingItemViewController.swift */,
-				5211FFE0255D2BC700408E4A /* Main.storyboard */,
 				5211FFE3255D2BC800408E4A /* Assets.xcassets */,
-				5211FFE5255D2BC800408E4A /* LaunchScreen.storyboard */,
 				5211FFE8255D2BC800408E4A /* Info.plist */,
-				5211FFFC255D3EEC00408E4A /* ShoppingItem.swift */,
-				5211FFFE255D518600408E4A /* ShoppingItemTableViewCell.swift */,
-				52110000255D55AD00408E4A /* ShoppingItemTableViewController.swift */,
-				52110002255D6ECC00408E4A /* CustomizedTextView.swift */,
 			);
 			path = ShoppingTracker;
 			sourceTree = "<group>";
@@ -109,6 +105,34 @@
 				5211FFF3255D2BC800408E4A /* Info.plist */,
 			);
 			path = ShoppingTrackerTests;
+			sourceTree = "<group>";
+		};
+		523437AE25620B310012554B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				52110002255D6ECC00408E4A /* CustomizedTextView.swift */,
+				5211FFFE255D518600408E4A /* ShoppingItemTableViewCell.swift */,
+				5211FFE5255D2BC800408E4A /* LaunchScreen.storyboard */,
+				5211FFE0255D2BC700408E4A /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		523437AF25620B3E0012554B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5211FFFC255D3EEC00408E4A /* ShoppingItem.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		523437B025620B470012554B /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				52110000255D55AD00408E4A /* ShoppingItemTableViewController.swift */,
+				5211FFDE255D2BC700408E4A /* ShoppingItemViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

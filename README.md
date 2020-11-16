@@ -11,3 +11,7 @@
 * 任务三
 ---
 仿照iPhone内置计算器开发一个自己的计算器App，要求适配各个型号的iPhone设备并实现Portrait朝向时的基本型计算和Landscape朝向时的科学型计算功能（iPad设备上运行时只需要实现Portrait朝向时的基本型计算功能）。请严格按照MVC结构进行设计开发（计算逻辑全部封装在模型中）
+
+* 任务四
+---
+仔细阅读Start Developing iOS Apps，仿照该App开发一个购物列表App，拍摄物品照片，记录物品名称和购买理由或心愿（物品名称能通过core ml技术进行自动识别尤佳），并实用archiving技术持久保存。
