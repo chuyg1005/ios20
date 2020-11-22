@@ -15,3 +15,7 @@
 * 任务四
 ---
 仔细阅读Start Developing iOS Apps，仿照该App开发一个购物列表App，拍摄物品照片，记录物品名称和购买理由或心愿（物品名称能通过core ml技术进行自动识别尤佳），并实用archiving技术持久保存。
+
+* 任务五
+---
+通过Pytorch使用CIFAR10数据集训练一个卷积神经神经网络进行图像分类，并且基于ONNX中间模型转换为CoreML模型
