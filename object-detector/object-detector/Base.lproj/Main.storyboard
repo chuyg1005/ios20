@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bQV-3N-Ztf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--目标检测器-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="object_detector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z7o-2x-bHi">
+                                <rect key="frame" x="25" y="118" width="364" height="558"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目标检测结果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxj-hV-afM">
+                                <rect key="frame" x="116" y="726" width="182" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Vxj-hV-afM" firstAttribute="top" secondItem="Z7o-2x-bHi" secondAttribute="bottom" constant="50" id="I5g-pI-BOu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Vxj-hV-afM" secondAttribute="bottom" constant="100" id="MCm-X0-Hba"/>
+                            <constraint firstItem="Vxj-hV-afM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MKI-eS-Xxl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Z7o-2x-bHi" secondAttribute="trailing" constant="25" id="WA9-zZ-52U"/>
+                            <constraint firstItem="Z7o-2x-bHi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="hIU-zm-NEZ"/>
+                            <constraint firstItem="Z7o-2x-bHi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="ql3-4u-Hzq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="目标检测器" id="1sS-rB-Wa9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="DP5-yZ-ONx">
+                            <connections>
+                                <action selector="camera:" destination="BYZ-38-t0r" id="cfd-hs-I5m"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Library" id="ujJ-Yh-3fa">
+                            <connections>
+                                <action selector="openLibrary:" destination="BYZ-38-t0r" id="hiO-ae-V4X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="Z7o-2x-bHi" id="otn-jy-Kue"/>
+                        <outlet property="resultLabel" destination="Vxj-hV-afM" id="yWK-nw-9oA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842.02898550724649" y="209.59821428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="N8j-Vm-0XM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bQV-3N-Ztf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1jk-Xo-fS9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4em-dN-52D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOW-Y7-mqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-68.115942028985515" y="209.59821428571428"/>
+        </scene>
+    </scenes>
+</document>

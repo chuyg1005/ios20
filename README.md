@@ -19,3 +19,11 @@
 * 任务五(image-clf)
 ---
 通过Pytorch使用CIFAR10数据集训练一个卷积神经神经网络进行图像分类，并且基于ONNX中间模型转换为CoreML模型
+
+* 任务六(object-detector)
+---
+针对给定Jupyter Notebook脚本，完成从图像分类模型到目标检测模型的迁移学习过程，并开发iOS应用。
+
+* 任务七(GestureClassifier)
+---
+针对给定Jupyter Notebook脚本，数据采集、人体姿态识别的iOS框架App，完成人体姿态识别的数据采集、模型训练、模型使用。
