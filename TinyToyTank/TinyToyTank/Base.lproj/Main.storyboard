@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hrj-IX-22x">
+    <device id="retina5_5" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Mqw-KA-3xX">
+            <objects>
+                <viewController id="hrj-IX-22x" customClass="ViewController" customModule="TinyToyTank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OhP-9Y-wAR">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kX2-gg-L4u">
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                            </arView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dHn-yV-7hJ">
+                                <rect key="frame" x="425" y="20" width="291" height="194"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rts-Jh-3rL">
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="97"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJi-AX-LeO" userLabel="TurretLeft">
+                                                <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
+                                                <state key="normal" backgroundImage="TurretLeft"/>
+                                                <connections>
+                                                    <action selector="turretLeft:" destination="hrj-IX-22x" eventType="touchUpInside" id="1f6-z2-9te"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaW-iK-OMk" userLabel="CannonFire">
+                                                <rect key="frame" x="97" y="0.0" width="97" height="97"/>
+                                                <state key="normal" backgroundImage="CannonFire"/>
+                                                <connections>
+                                                    <action selector="connonFire:" destination="hrj-IX-22x" eventType="touchUpInside" id="mlL-EM-Uzb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7Y-PM-OSX" userLabel="TurretRight">
+                                                <rect key="frame" x="194" y="0.0" width="97" height="97"/>
+                                                <state key="normal" backgroundImage="TurretRight"/>
+                                                <connections>
+                                                    <action selector="turretRight:" destination="hrj-IX-22x" eventType="touchUpInside" id="U6E-Kf-2dE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qZw-Ci-5PW">
+                                        <rect key="frame" x="0.0" y="97" width="291" height="97"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtH-hK-VOt" userLabel="TankLeft">
+                                                <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
+                                                <state key="normal" backgroundImage="TankLeft"/>
+                                                <connections>
+                                                    <action selector="tankLeft:" destination="hrj-IX-22x" eventType="touchUpInside" id="yfl-Mw-rRY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlU-jo-KHD" userLabel="TankForward">
+                                                <rect key="frame" x="97" y="0.0" width="97" height="97"/>
+                                                <state key="normal" backgroundImage="TankForward"/>
+                                                <connections>
+                                                    <action selector="tankForward:" destination="hrj-IX-22x" eventType="touchUpInside" id="HjC-Fn-qCh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-yW-0q3" userLabel="TankRight">
+                                                <rect key="frame" x="194" y="0.0" width="97" height="97"/>
+                                                <state key="normal" backgroundImage="TankRight"/>
+                                                <connections>
+                                                    <action selector="tankRight:" destination="hrj-IX-22x" eventType="touchUpInside" id="nY0-3i-hKE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dHn-yV-7hJ" secondAttribute="height" multiplier="3:2" id="jHW-Mc-40o"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="P9c-Dz-j2c"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kX2-gg-L4u" firstAttribute="top" secondItem="P9c-Dz-j2c" secondAttribute="top" id="9df-KA-Pyl"/>
+                            <constraint firstItem="P9c-Dz-j2c" firstAttribute="bottom" secondItem="dHn-yV-7hJ" secondAttribute="bottom" constant="20" id="G56-Nu-STc"/>
+                            <constraint firstItem="dHn-yV-7hJ" firstAttribute="top" secondItem="OhP-9Y-wAR" secondAttribute="top" constant="20" id="GEt-cd-PB0"/>
+                            <constraint firstItem="P9c-Dz-j2c" firstAttribute="trailing" secondItem="kX2-gg-L4u" secondAttribute="trailing" id="Iv7-kP-iqc"/>
+                            <constraint firstItem="P9c-Dz-j2c" firstAttribute="trailing" secondItem="dHn-yV-7hJ" secondAttribute="trailing" constant="20" id="TLz-aF-GyS"/>
+                            <constraint firstItem="P9c-Dz-j2c" firstAttribute="trailing" secondItem="dHn-yV-7hJ" secondAttribute="trailing" constant="20" id="Y2h-X6-Jj7"/>
+                            <constraint firstItem="P9c-Dz-j2c" firstAttribute="bottom" secondItem="dHn-yV-7hJ" secondAttribute="bottom" constant="200" id="pv4-6B-DOT"/>
+                            <constraint firstItem="P9c-Dz-j2c" firstAttribute="bottom" secondItem="kX2-gg-L4u" secondAttribute="bottom" id="sfU-As-fZx"/>
+                            <constraint firstItem="dHn-yV-7hJ" firstAttribute="leading" secondItem="P9c-Dz-j2c" secondAttribute="leading" constant="100" id="wpd-UW-lhb"/>
+                            <constraint firstItem="kX2-gg-L4u" firstAttribute="leading" secondItem="P9c-Dz-j2c" secondAttribute="leading" id="zES-XX-IiY"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="G56-Nu-STc"/>
+                                <exclude reference="TLz-aF-GyS"/>
+                                <exclude reference="Y2h-X6-Jj7"/>
+                                <exclude reference="pv4-6B-DOT"/>
+                                <exclude reference="GEt-cd-PB0"/>
+                                <exclude reference="wpd-UW-lhb"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="G56-Nu-STc"/>
+                                <include reference="TLz-aF-GyS"/>
+                                <include reference="wpd-UW-lhb"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="Y2h-X6-Jj7"/>
+                                <include reference="pv4-6B-DOT"/>
+                                <include reference="GEt-cd-PB0"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="kX2-gg-L4u" id="oaz-FE-w5L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jg2-Rk-zj8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144.80000000000001" y="79.610194902548727"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CannonFire" width="128" height="128"/>
+        <image name="TankForward" width="128" height="128"/>
+        <image name="TankLeft" width="128" height="128"/>
+        <image name="TankRight" width="128" height="128"/>
+        <image name="TurretLeft" width="128" height="128"/>
+        <image name="TurretRight" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
