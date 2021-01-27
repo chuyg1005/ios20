@@ -67,6 +67,7 @@ class ReviewsTableViewController: UITableViewController {
     cell.bodyTextLabel.text = review.text
     cell.titleLabel.text = review.movie
     cell.setSentiment(sentiment: review.sentiment)
+	print("review text: \(review.text)\nscore: \(String(describing: analyzeSentiment(text: review.text)))\n\n")
 
     if let translatedText = review.translatedText {
       cell.bodyTextLabel.text = "\(review.text)\n\nTranslation:\n\n\(translatedText)"

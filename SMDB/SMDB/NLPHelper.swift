@@ -99,8 +99,18 @@ func getSearchTerms(text: String, language: String? = nil, block: (String) -> Vo
 //}
 
 func analyzeSentiment(text:String) -> Double? {
-    // To be replaced
-    return nil
+// 2
+let tagger = NLTagger(tagSchemes: [.sentimentScore])
+tagger.string = text
+// 3
+let (tag, _) = tagger.tag(at: text.startIndex,
+unit: .paragraph,
+scheme: .sentimentScore)
+// 4
+guard let sentiment = tag,
+let score = Double(sentiment.rawValue)
+else { return nil }
+return score
 }
 
 func getSentimentClassifier() -> NLModel? {
